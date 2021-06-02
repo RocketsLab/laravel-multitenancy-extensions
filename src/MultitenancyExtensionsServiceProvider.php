@@ -12,7 +12,7 @@ class MultitenancyExtensionsServiceProvider extends ServiceProvider
     public function events()
     {
         return [
-            Events\TenantCreated::class => config('multitenancy-extensions.active_jobs')
+            Events\TenantCreated::class => config('multitenancy-extensions.tenant_created_listeners')
         ];
     }
 
