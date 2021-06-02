@@ -1,0 +1,55 @@
+{
+  "name": "rocketslab/laravel-multitenancy-extensions",
+  "description": "Spatie-Multitenancy Extensions Package",
+  "keywords": [
+    "rocketslab",
+    "spatie",
+    "laravel-multitenancy",
+    "multitenancy-extensions"
+  ],
+  "authors": [
+    {
+      "name": "Jorge Gonçalves",
+      "email": "jorge@rocketslab.com.br",
+      "homepage": "http://rocketslab.com.br",
+      "role": "Developer"
+    }
+  ],
+  "license": "MIT",
+  "type": "project",
+  "require": {
+    "php": "^7.4|^8.0",
+    "laravel/framework": "^8.0",
+    "spatie/laravel-multitenancy": "^2.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.0"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "RocketsLab\\MultitenancyExtensions\\MultitenancyExtensionsServiceProvider"
+      ],
+      "dont-discover": []
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "RocketsLab\\MultitenancyExtensions\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "RocketsLab\\MultitenancyExtensions\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
