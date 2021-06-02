@@ -5,7 +5,7 @@ This package are created for use with [Spatie's Laravel Multitenancy](https://sp
 ### Installation
 
 ```shell
-composer require rocketslab/multitenancy-extensions
+composer require rocketslab/laravel-multitenancy-extensions
 ```
 
 ### Configuration

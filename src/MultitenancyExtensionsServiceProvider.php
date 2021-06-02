@@ -18,14 +18,17 @@ class MultitenancyExtensionsServiceProvider extends ServiceProvider
 
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__ . "/config/multitenancy-extensions.php", "multitenancy-extensions");
+        $path = realpath(__DIR__ . '/../config/multitenancy-extensions.php');
+        $this->mergeConfigFrom($path, "multitenancy-extensions");
     }
 
     public function boot()
     {
         $this->bootEvents();
 
-        $this->publishes([__DIR__ . "/config/multitenancy-extensions.php"], "config");
+        $path = realpath(__DIR__ . '/../config/multitenancy-extensions.php');
+
+        $this->publishes([$path => config_path('multitenancy-extensions.php')], "config");
     }
 
     protected function bootEvents()
