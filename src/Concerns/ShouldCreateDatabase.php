@@ -17,11 +17,13 @@ trait ShouldCreateDatabase
     public function createDatabase()
     {
         $database = $this->getDatabaseName();
-        $charset = config('database.tenant.charset') ?? 'utf8mb4';
-        $collation = config('database.tenant.collation') ?? 'utf8mb4_unicode_ci';
+        $tenantConnection = $this->tenantDatabaseConnectionName();
+        $charset = config("database.{$tenantConnection}.charset") ?? 'utf8mb4';
+        $collation = config("database.{$tenantConnection}.collation") ?? 'utf8mb4_unicode_ci';
 
         $landlordConnection = $this->landlordDatabaseConnectionName();
         $connection = DB::connection($landlordConnection);
         $connection->statement("CREATE DATABASE `{$database}` CHARACTER SET `$charset` COLLATE `$collation`");
+        DB::purge($landlordConnection);
     }
 }
