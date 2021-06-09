@@ -60,6 +60,8 @@ Este comando roda todas as migrations da pasta `database/migrations/landlord` po
 Você pode customizar isso editando a seção `landlord` no arquivo de configuração
 `multitenancy-extensions`.
 
+Opcionalmente você pode adicionar a flag `--fresh` para remover todas as tabelas antes de migrar.
+
 ----
 
 Created by [@jjsquady - Jorge Gonçalves](https://github.com/jjsquady)

@@ -58,6 +58,8 @@ This command run all migrations in the `database/migrations/landlord` folder by 
 If you can modify this, edit `landlord` configuration section in `multitenancy-extensions`
 configuration file.
 
+Optionally you can use `--fresh` flag to drop all tables and migrate.
+
 ----
 
 Created by [@jjsquady - Jorge Gonçalves](https://github.com/jjsquady)
