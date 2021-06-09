@@ -12,7 +12,7 @@ class LandlordMigrationCommand extends Command
      * Command signature
      * @var string
      */
-    protected $signature = 'landlord:migrate';
+    protected $signature = 'landlord:migrate {--fresh}';
 
     /**
      * Command description.
@@ -42,7 +42,9 @@ class LandlordMigrationCommand extends Command
 
         $landlordMigrationsPath = config('multitenancy-extensions.landlord.migrations.path');
 
-        $this->call("migrate:fresh", [
+        $command = $this->hasArgument('--fresh') ? 'migrate:fresh' : 'migrate';
+
+        $this->call($command, [
             'database' => $landlordConnection,
             'path' => $landlordMigrationsPath,
         ]);
