@@ -5,6 +5,7 @@ namespace RocketsLab\MultitenancyExtensions;
 
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
+use RocketsLab\MultitenancyExtensions\Commands\LandlordMigrationCommand;
 use RocketsLab\MultitenancyExtensions\Events;
 
 class MultitenancyExtensionsServiceProvider extends ServiceProvider
@@ -29,6 +30,19 @@ class MultitenancyExtensionsServiceProvider extends ServiceProvider
         $path = realpath(__DIR__ . '/../config/multitenancy-extensions.php');
 
         $this->publishes([$path => config_path('multitenancy-extensions.php')], "config");
+
+        $this->bootCommands();
+    }
+
+    protected function bootCommands()
+    {
+        if(! $this->app->runningInConsole()) {
+            return;
+        }
+
+        $this->commands([
+            LandlordMigrationCommand::class
+        ]);
     }
 
     protected function bootEvents()
