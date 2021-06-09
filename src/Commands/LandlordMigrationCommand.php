@@ -45,8 +45,8 @@ class LandlordMigrationCommand extends Command
         $command = $this->hasArgument('--fresh') ? 'migrate:fresh' : 'migrate';
 
         $this->call($command, [
-            'database' => $landlordConnection,
-            'path' => $landlordMigrationsPath,
+            '--database' => $landlordConnection,
+            '--path' => $landlordMigrationsPath,
         ]);
     }
 }
