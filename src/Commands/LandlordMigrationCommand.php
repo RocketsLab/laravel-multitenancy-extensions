@@ -12,7 +12,7 @@ class LandlordMigrationCommand extends Command
      * Command signature
      * @var string
      */
-    protected $signature = 'landlord:migrate {--fresh}';
+    protected $signature = 'landlord:migrate {--fresh : Drop all tables and migrate}';
 
     /**
      * Command description.
