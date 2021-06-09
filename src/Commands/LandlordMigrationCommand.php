@@ -42,7 +42,7 @@ class LandlordMigrationCommand extends Command
 
         $landlordMigrationsPath = config('multitenancy-extensions.landlord.migrations.path');
 
-        $command = $this->hasArgument('--fresh') ? 'migrate:fresh' : 'migrate';
+        $command = $this->option('fresh') ? 'migrate:fresh' : 'migrate';
 
         $this->call($command, [
             '--database' => $landlordConnection,
