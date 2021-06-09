@@ -19,8 +19,8 @@ return [
      */
     'landlord' => [
         'migrations' => [
-            'connection' => env('DB_CONNECTION', null),
-            'path' => env('LANDLORD_MIGRATIONS_PATH', null)
+            'connection' => env('DB_CONNECTION', 'landlord'),
+            'path' => env('LANDLORD_MIGRATIONS_PATH', 'database/migrations/landlord')
         ]
     ]
 ];

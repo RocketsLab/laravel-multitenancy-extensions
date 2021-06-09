@@ -38,11 +38,11 @@ class LandlordMigrationCommand extends Command
      */
     public function handle()
     {
-        $landlordConnection = config('multitenancy-extensions.landlord.migrations.connection', 'landlord');
+        $landlordConnection = config('multitenancy-extensions.landlord.migrations.connection');
 
-        $landlordMigrationsPath = config('multitenancy-extensions.landlord.migrations.path', 'database/migrations/landlord');
+        $landlordMigrationsPath = config('multitenancy-extensions.landlord.migrations.path');
 
-        $this->call("migrate", [
+        $this->call("migrate:fresh", [
             'database' => $landlordConnection,
             'path' => $landlordMigrationsPath,
         ]);
