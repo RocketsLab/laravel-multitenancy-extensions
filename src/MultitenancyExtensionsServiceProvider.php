@@ -3,17 +3,27 @@
 
 namespace RocketsLab\MultitenancyExtensions;
 
+
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
-use RocketsLab\MultitenancyExtensions\Commands\LandlordMigrationCommand;
 use RocketsLab\MultitenancyExtensions\Events;
+use RocketsLab\MultitenancyExtensions\Commands\LandlordMigrationCommand;
+use RocketsLab\MultitenancyExtensions\Jobs\ProcessTenantCreation;
 
 class MultitenancyExtensionsServiceProvider extends ServiceProvider
 {
     public function events()
     {
         return [
-            Events\TenantCreated::class => config('multitenancy-extensions.tenant_created_listeners')
+            Events\TenantCreated::class => [
+                ProcessTenantCreation::make(config('multitenancy-extensions.tenant_created_listeners'))
+                    ->send(function (Events\TenantCreated $event) {
+                        return $event;
+                    })
+                    ->shouldBeQueued(config('multitenancy-extensions.jobs.should_queue'))
+                    ->toListener()
+            ],
+            Events\DatabaseCreated::class => [],
         ];
     }
 

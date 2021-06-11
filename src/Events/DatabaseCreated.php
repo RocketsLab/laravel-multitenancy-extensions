@@ -9,12 +9,13 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use Spatie\Multitenancy\Models\Tenant;
 
-class TenantCreated implements ShouldBroadcast
+class DatabaseCreated implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $tenant;
+    public Tenant $tenant;
 
     /**
      * Create a new event instance.
